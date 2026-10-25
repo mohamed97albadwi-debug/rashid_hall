@@ -25,7 +25,6 @@ jobs:
 
     - name: Find and Build Flutter Project
       run: |
-        # البحث التلقائي عن المجلد الذي يحتوي على ملف pubspec.yaml ودخوله
         PROJECT_DIR=$(find . -name "pubspec.yaml" -maxdepth 2 -exec dirname {} \; | head -n 1)
         echo "Found project directory: $PROJECT_DIR"
         cd "$PROJECT_DIR"
