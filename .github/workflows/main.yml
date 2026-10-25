@@ -23,11 +23,10 @@ jobs:
         flutter-version: '3.19.x'
         channel: 'stable'
 
-    - name: Find and Build Flutter Project
+    - name: Build APK Directly
       run: |
-        PROJECT_DIR=$(find . -name "pubspec.yaml" -maxdepth 2 -exec dirname {} \; | head -n 1)
-        echo "Found project directory: $PROJECT_DIR"
-        cd "$PROJECT_DIR"
+        cd flutter_application_1
+        flutter config --no-analytics
         flutter pub get
         flutter build apk --release
 
@@ -35,4 +34,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: app-release
-        path: '**/build/app/outputs/flutter-apk/app-release.apk'
+        path: flutter_application_1/build/app/outputs/flutter-apk/app-release.apk
